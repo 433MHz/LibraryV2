@@ -4,16 +4,17 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 
-public class AddBookJDBC {
-String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
-String DB_URL = "jdbc:mysql://localhost/library";
-String USERNAME = "root";
-String PASSWORD = "";
+import org.springframework.beans.factory.annotation.Autowired;
 
-public synchronized void add(String[] bookInfo) {
+public class AddBookJDBC {
+
+	@Autowired
+	JdbcConnectionData jdbcConnectionData;
+
+public synchronized String add(String[] bookInfo) {
 		try {
-			Class.forName(JDBC_DRIVER);
-			Connection connection = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD);
+			Class.forName(jdbcConnectionData.JDBC_DRIVER);
+			Connection connection = DriverManager.getConnection(jdbcConnectionData.DB_URL, jdbcConnectionData.USERNAME, jdbcConnectionData.PASSWORD);
 			PreparedStatement statement = connection.prepareStatement("insert into books values (null, ?, ?, ?, ?, ?, ?)");
 			for(int i = 0; i<=5; i++) {
 				statement.setString(i+1, bookInfo[i]);
@@ -21,10 +22,10 @@ public synchronized void add(String[] bookInfo) {
 			statement.executeUpdate();
 			statement.close();
 			connection.close();
-		
+			return "Data added";
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return "Error while adding data";
 		}
+		
 }
 }

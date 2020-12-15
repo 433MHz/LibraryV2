@@ -14,12 +14,14 @@ public class AddBookSerlvet {
 	
 	@Autowired
 	AddBookService addBookService;
+	@Autowired
+	ModelAndView modelAndView;
 	
 	@RequestMapping("/addBook")
 	public ModelAndView modelAndView(HttpServletRequest request) {
-		addBookService.add(request);
 		
-		
-		return null;
+		modelAndView.setViewName("addBook");
+		modelAndView.addObject("message", addBookService.add(request));
+		return modelAndView;
 	}
 }

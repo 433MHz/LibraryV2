@@ -11,7 +11,7 @@ public class AddBookService {
 	@Autowired
 	AddBookJDBC addBookJDBC;
 	
-public void add(HttpServletRequest request) {
+public String add(HttpServletRequest request) {
 	String[] bookInfo = new String[6];
 	
 	for(int i = 0; i<=5; i++) {
@@ -19,6 +19,6 @@ public void add(HttpServletRequest request) {
 		bookInfo[i] = request.getParameter(parameter);
 	}
 	
-	addBookJDBC.add(bookInfo);
+	return addBookJDBC.add(bookInfo);
 }
 }
