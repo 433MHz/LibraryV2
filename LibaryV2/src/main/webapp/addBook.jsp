@@ -15,6 +15,7 @@
 	Publishing house: <input type="text" name="t5"><br>
 	Book price: <input type="text" name="t6"><br>
 	<input type="submit" value="Add"><br>
+	
 </form>
 </body>
 </html>
