@@ -17,7 +17,7 @@ public class AddBookSerlvet {
 	@Autowired
 	ModelAndView modelAndView;
 	
-	@RequestMapping("/addBook")
+	@RequestMapping("/add")
 	public ModelAndView modelAndView(HttpServletRequest request) {
 		
 		modelAndView.setViewName("addBook");

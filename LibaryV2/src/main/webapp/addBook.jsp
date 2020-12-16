@@ -7,7 +7,7 @@
 <title>welcome page</title>
 </head>
 <body>
-	<form action="addBook">
+	<form action="add">
 		Book title: <input type="text" name="t1"><br> Author
 		first name: <input type="text" name="t2"><br> Author last
 		name: <input type="text" name="t3"><br> Year of
