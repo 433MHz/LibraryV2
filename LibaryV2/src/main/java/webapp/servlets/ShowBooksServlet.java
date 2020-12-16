@@ -17,7 +17,7 @@ public class ShowBooksServlet {
 	
 	@RequestMapping("/showBooks")
 	public ModelAndView modelAndView() {
-		modelAndView.setViewName("showBooks");
+		modelAndView.setViewName("books");
 		modelAndView.addObject("result", showBooksService.getData());
 		return modelAndView;
 	}

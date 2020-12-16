@@ -58,8 +58,8 @@ public class SpringConfiguration {
 	}
 	
 	@Bean
-	public ArrayList<BookObject> arrayList(){
-		return new ArrayList<BookObject>();
+	public ArrayList<String[]> arrayList(){
+		return new ArrayList<String[]>();
 	}
 	
 	@Bean

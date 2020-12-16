@@ -12,16 +12,14 @@ import webapp.objects.BookObject;
 
 public class ShowBooksJDBC {
 	
-	@Autowired
-	BookObject bookObject;
 	
 	@Autowired
-	ArrayList<BookObject> arrayList;
+	ArrayList<String[]> arrayList;
 	
 	@Autowired
 	JdbcConnectionData jdbcConnectionData;
 	
-	public ArrayList<BookObject> getData() {
+	public ArrayList<String[]> getData() {
 		
 		try {
 			Class.forName(jdbcConnectionData.JDBC_DRIVER);
@@ -30,16 +28,16 @@ public class ShowBooksJDBC {
 			ResultSet resultSet = statement.executeQuery("select * from books");
 			
 			while(resultSet.next()) {
-				bookObject.setId(resultSet.getInt("ID"));
-				bookObject.setTitle(resultSet.getString("Title"));
-				bookObject.setAuthorFirstName(resultSet.getString("AuthorFirstName"));
-				bookObject.setAuthorLastName(resultSet.getString("AuthorLastName"));
-				bookObject.setYearOfPublish(resultSet.getInt("YearOfPublish"));
-				bookObject.setPublishingHouse(resultSet.getString("PublishingHouse"));
-				bookObject.setPrice(resultSet.getFloat("Price"));
+				String[] data = new String[7];
+				data[0]=(resultSet.getString("ID"));
+				data[1]=(resultSet.getString("Title"));
+				data[2]=(resultSet.getString("AuthorFirstName"));
+				data[3]=(resultSet.getString("AuthorLastName"));
+				data[4]=(resultSet.getString("YearOfPublish"));
+				data[5]=(resultSet.getString("PublishingHouse"));
+				data[6]=(resultSet.getString("Price"));
 				
-				arrayList.add(bookObject);
-				bookObject = new BookObject();
+				arrayList.add(data);
 			}
 			return arrayList;
 		} catch (Exception e) {
